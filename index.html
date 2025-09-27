@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Food Ordering Website</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    header {
+      background: linear-gradient(135deg, #d6c7e5, #f5edf8);
+      padding: 25px;
+      text-align: center;
+      font-size: 2rem;
+      font-weight: bold;
+      color: #4a3d59;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      letter-spacing: 1px;
+    }
+    nav {
+      background: white;
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      padding: 15px 0;
+      border-bottom: 1px solid #e0d4ef;
+      font-weight: bold;
+    }
+    nav a {
+      text-decoration: none;
+      color: #4a3d59;
+      font-size: 1rem;
+      position: relative;
+    }
+    nav a::after {
+      content: "";
+      position: absolute;
+      width: 0%;
+      height: 2px;
+      background: #d6c7e5;
+      left: 0;
+      bottom: -5px;
+      transition: 0.3s;
+    }
+    nav a:hover::after {
+      width: 100%;
+    }
+    .home {
+      background: url('https://images.unsplash.com/photo-1600891964599-f61ba0e24092?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80') center/cover no-repeat;
+      color: white;
+      text-align: center;
+      padding: 100px 20px;
+      border-radius: 0 0 20px 20px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    }
+    .hero h1 {
+      font-size: 2.5rem;
+      margin-bottom: 10px;
+      text-shadow: 2px 2px 5px rgba(0,0,0,0.5);
+    }
+    .hero p {
+      font-size: 1.2rem;
+      margin-bottom: 20px;
+      text-shadow: 1px 1px 4px rgba(0,0,0,0.5);
+    }
+    .hero button {
+      background-color: #fff;
+      color: #4a3d59;
+      font-size: 1.1rem;
+      border: none;
+      padding: 12px 20px;
+      border-radius: 10px;
+      cursor: pointer;
+      box-shadow: 0 3px 6px rgba(0,0,0,0.2);
+      transition: transform 0.2s ease;
+    }
+    .hero button:hover {
+      transform: scale(1.05);
+    }
+  </style>
+</head>
+<body>
+  <header>🍔 Foodie's Heaven</header>
+  <nav>
+    <a href="#home">Home</a>
+    <a href="#menu">Menu</a>
+    <a href="#cart">Cart</a>
+  </nav>
+
+  <!-- Home Section -->
+  <section class="home" id="home">
+    <div class="hero">
+      <h1>Delicious Food, Delivered Fast</h1>
+      <p>Browse our wide menu, add to cart, and enjoy tasty food right at your doorstep!</p>
+      <button onclick="document.getElementById('menu').scrollIntoView({behavior:'smooth'});">
+        🍽️ Explore Menu
+      </button>
+    </div>
+  </section>
+
+  <!-- Menu Section -->
+<section class="menu" id="menu">
+  <div class="item">
+    <img src="burger.JPG" alt="Burger">
+    <h3>Burger</h3>
+    <p>Rs. 250</p>
+    <button class="add-btn" onclick="addToCart('Burger',250)">Add to Cart</button>
+  </div>
+  <div class="item">
+    <img src="pizza.JPG" alt="Pizza">
+    <h3>Pizza</h3>
+    <p>Rs. 600</p>
+    <button class="add-btn" onclick="addToCart('Pizza',600)">Add to Cart</button>
+  </div>
+  <div class="item">
+    <img src="pasta.JPG" alt="Pasta">
+    <h3>Pasta</h3>
+    <p>Rs. 400</p>
+    <button class="add-btn" onclick="addToCart('Pasta',400)">Add to Cart</button>
+  </div>
+  <div class="item">
+    <img src="fries.JPG" alt="French Fries">
+    <h3>French Fries</h3>
+    <p>Rs. 150</p>
+    <button class="add-btn" onclick="addToCart('French Fries',150)">Add to Cart</button>
+  </div>
+  <div class="item">
+    <img src="sandwich.JPG" alt="Club Sandwich">
+    <h3>Club Sandwich</h3>
+    <p>Rs. 300</p>
+    <button class="add-btn" onclick="addToCart('Club Sandwich',300)">Add to Cart</button>
+  </div>
+  <div class="item">
+    <img src="shawarma.JPG" alt="Shawarma">
+    <h3>Shawarma</h3>
+    <p>Rs. 200</p>
+    <button class="add-btn" onclick="addToCart('Shawarma',200)">Add to Cart</button>
+  </div>
+  <div class="item">
+    <img src="biryani.JPG" alt="Biryani">
+    <h3>Biryani</h3>
+    <p>Rs. 350</p>
+    <button class="add-btn" onclick="addToCart('Biryani',350)">Add to Cart</button>
+  </div>
+  <div class="item">
+    <img src="karahi.JPG" alt="Chicken Karahi">
+    <h3>Chicken Karahi</h3>
+    <p>Rs. 1200</p>
+    <button class="add-btn" onclick="addToCart('Chicken Karahi',1200)">Add to Cart</button>
+  </div>
+  <div class="item">
+    <img src="noodles.JPG" alt="Noodles">
+    <h3>Noodles</h3>
+    <p>Rs. 250</p>
+    <button class="add-btn" onclick="addToCart('Noodles',250)">Add to Cart</button>
+  </div>
+  <div class="item">
+    <img src="tikka.JPG" alt="Chicken Tikka">
+    <h3>Chicken Tikka</h3>
+    <p>Rs. 300</p>
+    <button class="add-btn" onclick="addToCart('Chicken Tikka',300)">Add to Cart</button>
+  </div>
+  <div class="item">
+    <img src="seekh_kebab.JPG" alt="Seekh Kebab">
+    <h3>Seekh Kebab</h3>
+    <p>Rs. 250</p>
+    <button class="add-btn" onclick="addToCart('Seekh Kebab',250)">Add to Cart</button>
+  </div>
+  <div class="item">
+    <img src="fish.JPG" alt="Fried Fish">
+    <h3>Fried Fish</h3>
+    <p>Rs. 700</p>
+    <button class="add-btn" onclick="addToCart('Fried Fish',700)">Add to Cart</button>
+  </div>
+  <div class="item">
+    <img src="icecream.JPG" alt="Ice Cream">
+    <h3>Ice Cream</h3>
+    <p>Rs. 100</p>
+    <button class="add-btn" onclick="addToCart('Ice Cream',100)">Add to Cart</button>
+  </div>
+  <div class="item">
+    <img src="brownie.JPG" alt="Chocolate Brownie">
+    <h3>Chocolate Brownie</h3>
+    <p>Rs. 250</p>
+    <button class="add-btn" onclick="addToCart('Chocolate Brownie',250)">Add to Cart</button>
+  </div>
+  <div class="item">
+    <img src="juice.JPG" alt="Fresh Juice">
+    <h3>Fresh Juice</h3>
+    <p>Rs. 180</p>
+    <button class="add-btn" onclick="addToCart('Fresh Juice',180)">Add to Cart</button>
+  </div>
+</section>
+
+  <!-- Cart Section -->
+  <section class="cart" id="cart">
+    <h2>Your Cart</h2>
+    <ul id="cart-list"></ul>
+    <p><strong>Total: Rs. <span id="cart-total">0</span></strong></p>
+    <button class="add-btn" onclick="checkout()">Place Order</button>
+  </section>
+
+  <script src="script.js"></script>
+</body>
+</html>

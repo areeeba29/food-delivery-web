@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Place Order</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .order-container {
+      max-width: 600px;
+      margin: 20px auto;
+      background: white;
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+    h2 {
+      text-align: center;
+      color: #4a3d59;
+    }
+    label {
+      font-weight: bold;
+      display: block;
+      margin-top: 10px;
+    }
+    input, textarea, select {
+      width: 100%;
+      padding: 10px;
+      margin-top: 5px;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+      font-size: 1rem;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 15px 0;
+    }
+    th, td {
+      padding: 8px;
+      border-bottom: 1px solid #ddd;
+      text-align: left;
+    }
+    .total {
+      text-align: right;
+      font-weight: bold;
+      font-size: 1.1rem;
+    }
+    .btn-submit {
+      display: block;
+      width: 100%;
+      background: #d6c7e5;
+      color: #4a3d59;
+      border: none;
+      padding: 12px;
+      font-size: 1rem;
+      border-radius: 10px;
+      cursor: pointer;
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+  <header>🧾 Order & Billing Details</header>
+  <div class="order-container">
+    <h2>Review Your Order</h2>
+    <table id="order-summary">
+      <thead>
+        <tr><th>Item</th><th>Price</th></tr>
+      </thead>
+      <tbody></tbody>
+      <tfoot>
+        <tr><td class="total">Total:</td><td class="total" id="order-total">Rs. 0</td></tr>
+      </tfoot>
+    </table>
+
+    <h2>Billing Details</h2>
+    <form onsubmit="return confirmOrder()">
+      <label for="name">Full Name</label>
+      <input type="text" id="name" placeholder="Enter your name" required>
+
+      <label for="address">Address</label>
+      <textarea id="address" placeholder="Enter full delivery address" required></textarea>
+
+      <label for="phone">Phone Number</label>
+      <input type="text" id="phone" placeholder="03XXXXXXXXX" required>
+
+      <label for="payment">Payment Method</label>
+      <select id="payment" required>
+        <option value="">Select Payment</option>
+        <option value="COD">Cash on Delivery</option>
+        <option value="Card">Credit/Debit Card</option>
+        <option value="Easypaisa">Easypaisa</option>
+        <option value="JazzCash">JazzCash</option>
+      </select>
+
+      <button class="btn-submit" type="submit">Confirm Order</button>
+    </form>
+  </div>
+
+  <script>
+    // Get cart from localStorage
+    const cart = JSON.parse(localStorage.getItem('cart')) || [];
+    const tbody = document.querySelector('#order-summary tbody');
+    let total = 0;
+    cart.forEach(item => {
+      const row = document.createElement('tr');
+      row.innerHTML = `<td>${item.name}</td><td>Rs. ${item.price}</td>`;
+      tbody.appendChild(row);
+      total += item.price;
+    });
+    document.getElementById('order-total').textContent = "Rs. " + total;
+
+    function confirmOrder() {
+      if(cart.length === 0) {
+        alert('No items in cart!');
+        return false;
+      }
+      alert('✅ Thank you ' + document.getElementById('name').value + '! Your order has been placed successfully.');
+      localStorage.removeItem('cart'); // clear cart
+      window.location.href = 'index.html';
+      return false;
+    }
+  </script>
+</body>
+</html>
